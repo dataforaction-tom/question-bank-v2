@@ -28,7 +28,7 @@ function App() {
         <div className="home-text">
           <h1>Welcome to the Data for Action Question Bank</h1>
           <h4>The Question Bank is part of our approach to creating open infrastructure for action. We believe that by sharing the questions we are trying answer openly we can work collaboratively to solve them</h4>
-          <h4>Here you can add your questions, find other questions, add ideas or resources that might help answer these questions or find collaborators to work with to do so</h4>
+          <h4>Here you can add your questions, find other questions, add ideas or resources that might help answer these questions or find collaborators to work with to do so.</h4>
           <Box sx={{ display: 'flex', alignItems: 'center', ml: '10px' }}> 
           <Button component={Link} to='/submit-question' variant="outlined" color="secondary" sx={{ my: 1, mx: 1.5 }} text style={{ borderRadius: '20px' }}>
             Submit Question
