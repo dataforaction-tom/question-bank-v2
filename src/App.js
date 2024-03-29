@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
+import QuestionForm from './QuestionForm';
+
+import theme from './theme';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Navigation from './Navigation'; 
+import QuestionSearch from './QuestionSearch';
+import { ThemeProvider } from './theme-context';
+import CssBaseline from '@mui/material/CssBaseline'; // Helps with consistent background and resets
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <ThemeProvider>
+       <CssBaseline />
+      <Navigation /> 
+    
+       
+          
+
+          <Routes> 
+            <Route path="/submit-question" element={<QuestionForm />} />
+            <Route path="/search" element={<QuestionSearch />} />
+            
+          </Routes>
+    
+      
+    </ThemeProvider>
   );
 }
 
