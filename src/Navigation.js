@@ -13,7 +13,7 @@ function Navigation() {
     <AppBar position="static" color="primary" elevation={0} sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', overflowX: 'auto' }}>
-          {/* Logo and Menu Icon */}
+          
           <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', ml: '10px' }}> 
             <IconButton
