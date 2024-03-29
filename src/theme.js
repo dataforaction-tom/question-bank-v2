@@ -15,7 +15,8 @@ export const getThemeOptions = (mode) => ({
             main: '#f3581d',
           },
           text: {
-            primary: '#1f1d1e', // Dark text for light background
+            primary: '#1f1d1e',
+            seconday: '#9dc131' // Dark text for light background
           },
           background: {
             default: '#f4f4f4', // Light background
@@ -50,10 +51,23 @@ export const getThemeOptions = (mode) => ({
           },
         }),
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none', // This makes button text lowercase
+        },
+      },
+    },
+  },
+
   typography: {
     fontSize: 16,
+    fontFamily: 'Figtree',
+    
     button: {
       fontFamily: 'Figtree',
+      fontWeight: 500,
     },
     h1: {
       fontFamily: 'Figtree',
@@ -109,6 +123,9 @@ export const getThemeOptions = (mode) => ({
     MuiTooltip: {
       arrow: true,
     },
+    MuiButton:{
+
+    }
   },
   spacing: 8,
 });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { TextField, Button, Container, Grid, Card, CardContent, Typography, IconButton, Pagination, CardActions } from '@mui/material';
+import { TextField, Button, Container, Grid, Card, CardContent, Typography, IconButton, Pagination, CardActions, Box } from '@mui/material';
 
 import { supabase } from './supabaseClient';
 import axios from 'axios'; 
@@ -158,30 +158,36 @@ const itemsPerPage = 5; // Adjust based on your preference
 
   return (
     <>
+    <Box className="center">
+      <h4>Add your question to the Question Bank below</h4>
+    </Box>
     <Container maxWidth="sm" style={{
         backgroundColor: theme.palette.mode === 'light' ? '#f4f4f4' : theme.palette.background.default, // Adjusting the background color based on the theme mode
         padding: '20px',
         borderRadius: '8px',
-        boxShadow: '0px 4px 12px rgba(0,0,0,0.1)',
+        boxShadow: '0px 4px 12px rgba(248,96,177,0.1)',
+        
         
       }}>
     <form onSubmit={formik.handleSubmit}>
       <TextField
         id="question"
         name="question"
-        label="Question"
+        label="What question do you have?"
         value={formik.values.question}
         onChange={formik.handleChange}
         fullWidth
-        style={{ marginBottom: 8, borderRadius: '4px', color: "#f4f4f4" }}
+        color="info" 
+        style={{ marginBottom: 8, borderRadius: '4px', color: "secondary" }}
       />
       <TextField
         id="action"
         name="action"
-        label="Action"
+        label="What action could you take if you could answer this question?"
         value={formik.values.action}
         onChange={formik.handleChange}
         fullWidth
+        color="info" 
         style={{ marginBottom: 8, borderRadius: '4px' }}
       />
       <TextField
@@ -191,15 +197,17 @@ const itemsPerPage = 5; // Adjust based on your preference
         value={formik.values.name}
         onChange={formik.handleChange}
         fullWidth
+        color="info" 
         style={{ marginBottom: 8, borderRadius: '4px' }}
       />
       <TextField
         id="email"
         name="email"
-        label="Contact email"
+        label="Contact email (should you want to be contacted about this question)"
         value={formik.values.email}
         onChange={formik.handleChange}
         fullWidth
+        color="info" 
         style={{ marginBottom: 8, borderRadius: '4px' }}
       />
       <TextField
@@ -209,11 +217,12 @@ const itemsPerPage = 5; // Adjust based on your preference
         value={formik.values.organsiation}
         onChange={formik.handleChange}
         fullWidth
-        style={{ marginBottom: 8, borderRadius: '4px', color:"#fff" }}
+        color="info" 
+        style={{ marginBottom: 8, borderRadius: '4px', }}
       />
       
       
-      <Button type="submit" variant="contained" color="secondary" text style={{ borderRadius: '20px' }}>
+      <Button type="submit" variant="contained" color="primary" text style={{ borderRadius: '20px', fontFamily: 'Roboto' }}>
           Submit
         </Button>
     </form>
@@ -223,7 +232,7 @@ const itemsPerPage = 5; // Adjust based on your preference
      {similarQuestions.length > 0 && (
         <Container style={{ marginTop: '20px'}}>
           <Typography variant="h5" component="h2" style={{ marginBottom: '20px' }}>
-            Similar Questions:
+            Below are Questions that have been submitted that are similar to yours:
           </Typography>
           <Grid container spacing={2}>
             
@@ -231,11 +240,14 @@ const itemsPerPage = 5; // Adjust based on your preference
               <Grid item xs={12} sm={6} md={4} key={q.id}>
                 <Card className="" variant="outlined" style={{ boxShadow: '0px 2px 4px rgba(0,0,0,0.1)', borderRadius: '20px' }}>
                   <CardContent>
-                    <Typography className="questions" variant="h6" component="p" color="text" >
+                    <Typography className="questions" variant="h6" component="p" color="primary" >
                       {q.question}
                     </Typography>
-                    <Typography color="text">
-                      Action: {q.action}
+                    <Typography component="span" color="text"> {/* Placeholder text color */}
+                      Action: 
+                    </Typography>
+                    <Typography component="span" color="textSecondary"> {/* Value text color */}
+                      {q.action}
                     </Typography>
                     <Typography color="text">
                       Submitted by: {q.name}
@@ -250,8 +262,11 @@ const itemsPerPage = 5; // Adjust based on your preference
                   </CardContent>
                   
                   <CardActions>
-                    <Button variant="contained" size="small" color="secondary" text style={{ borderRadius: '20px' }} >Add resource</Button>
-                    <Button variant="contained" size="small" text style={{ borderRadius: '20px' }}>Contact</Button>
+                  <Box display="flex" justifyContent="space-between" width="100%" >
+ 
+                    <Button variant="outlined"  color="primary" text style={{ borderRadius: '20px' }} >Add resource</Button>
+                    <Button variant="outlined"  color="secondary" text style={{ borderRadius: '20px' }}>Contact</Button>
+                    </Box>
                   </CardActions>
                   <CardActions>
                     

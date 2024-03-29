@@ -14,6 +14,7 @@ function Navigation() {
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between', overflowX: 'auto' }}>
           {/* Logo and Menu Icon */}
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', ml: '10px' }}> 
             <IconButton
               size="large"
@@ -31,6 +32,7 @@ function Navigation() {
               sx={{ height: 60 }} 
             />
           </Box>
+          </Link>
           
           <Typography
             variant="h4"
