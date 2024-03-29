@@ -16,7 +16,7 @@ import {  Button, Box } from '@mui/material';
 function App() {
   const location = useLocation();
 
-  // Checking if the path is the root ("/")
+
   const isHome = location.pathname === '/';
   return (
     

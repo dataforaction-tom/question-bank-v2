@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
-import {TextField, Select, MenuItem, Button, Grid, Card, CardContent, Typography, Pagination, Container, Box, FormControl} from '@mui/material';
+import {TextField, Select, MenuItem, Button, Grid, Card, CardContent, Typography, Pagination, Container,  FormControl} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 
 import StarIcon from '@mui/icons-material/Star';
 import { useTheme } from '@mui/material/styles';
-import InputLabel from '@mui/material/InputLabel';
+
 
 
 

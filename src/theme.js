@@ -123,9 +123,7 @@ export const getThemeOptions = (mode) => ({
     MuiTooltip: {
       arrow: true,
     },
-    MuiButton:{
-
-    }
+    
   },
   spacing: 8,
 });
