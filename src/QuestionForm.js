@@ -7,6 +7,7 @@ import axios from 'axios';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useTheme } from '@mui/material/styles';
+import AddResourceForm from './AddResourceForm';
 
 
 
@@ -16,8 +17,16 @@ function QuestionForm() {
   const [similarQuestions, setSimilarQuestions] = useState([]);
   const [upvotedQuestions, setUpvotedQuestions] = useState([]); 
   const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 5; // Adjust based on your preference
+  const itemsPerPage = 5; // Adjust based on your preference
+  const [showAddResourceForm, setShowAddResourceForm] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
 
+
+  const handleAddResourceClick = (question) => {
+    setSelectedQuestion(question);
+    setShowAddResourceForm(true);
+    console.log('selected question to add resource to', selectedQuestion)
+  };
 
   const handleUpvote = async (questionId) => {
     // Fetch the current priority of the question
@@ -131,7 +140,7 @@ const itemsPerPage = 5; // Adjust based on your preference
 
         // Search for similar questions
         const { data: similarData, error: searchError } = await supabase
-          .rpc('match_questions', { query_embedding: embedding, match_threshold: 0.7 });
+          .rpc('match_questions', { query_embedding: embedding, match_threshold: 0.8 });
 
         if (searchError) {
           console.error('Error searching for similar questions:', searchError);
@@ -229,7 +238,8 @@ const itemsPerPage = 5; // Adjust based on your preference
    
     </Container>
     
-     {similarQuestions.length > 0 && (
+    
+     {similarQuestions.length > 0 && !showAddResourceForm && (
         <Container style={{ marginTop: '20px'}}>
           <Typography variant="h5" component="h2" style={{ marginBottom: '20px' }}>
             Below are Questions that have been submitted that are similar to yours:
@@ -264,7 +274,7 @@ const itemsPerPage = 5; // Adjust based on your preference
                   <CardActions>
                   <Box display="flex" justifyContent="space-between" width="100%" >
  
-                    <Button variant="outlined"  color="primary" text style={{ borderRadius: '20px' }} >Add resource</Button>
+                    <Button variant="outlined"  color="primary" text style={{ borderRadius: '20px' }} onClick={() => handleAddResourceClick(q)} >Add resource</Button>
                     <Button variant="outlined"  color="secondary" text style={{ borderRadius: '20px' }}>Contact</Button>
                     </Box>
                   </CardActions>
@@ -273,8 +283,12 @@ const itemsPerPage = 5; // Adjust based on your preference
                   </CardActions>
 
                 </Card>
+               
+
+                
               </Grid>
             ))}
+            
           </Grid>
           <Pagination
             count={Math.ceil(totalQuestions / itemsPerPage)}
@@ -283,9 +297,19 @@ const itemsPerPage = 5; // Adjust based on your preference
             color="primary"
             style={{ marginTop: '20px' }}
           />
+          
         </Container>
+        
       )}
+       {showAddResourceForm && selectedQuestion && (
+      <AddResourceForm
+        question={selectedQuestion}
+        onClose={() => setShowAddResourceForm(false)} // Optionally pass a handler to close the form
+        // You can also pass an onSubmit prop if you want to handle form submission from within QuestionForm
+      />
+    )}
     </>
+    
     
   );
 }

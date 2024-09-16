@@ -10,6 +10,7 @@ import { ThemeProvider } from './theme-context';
 import CssBaseline from '@mui/material/CssBaseline'; // Helps with consistent background and resets
 import {Link} from 'react-router-dom'
 import {  Button, Box } from '@mui/material';
+import AddResourceForm from './AddResourceForm';
 
 
 
@@ -44,6 +45,7 @@ function App() {
           <Routes> 
             <Route path="/submit-question" element={<QuestionForm />} />
             <Route path="/search" element={<QuestionSearch />} />
+            <Route path="/resource" element={<AddResourceForm />} />
             
           </Routes>
     
